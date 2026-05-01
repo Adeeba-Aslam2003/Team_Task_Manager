@@ -1,10 +1,14 @@
 import express from "express";
+import userRoutes from "./userRoute.js"; // 👈 import
 
 const router = express.Router();
 
-// ✅ ये route जरूरी है
+// test route
 router.get("/", (req, res) => {
   res.send("API is working 🚀");
 });
+
+// 👇 THIS IS MAIN FIX
+router.use("/users", userRoutes); 
 
 export default router;
