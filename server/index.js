@@ -18,15 +18,11 @@ const app = express();
 
 // ✅ CORS FIX (🔥 IMPORTANT)
 
-app.use(
-  cors({
-    origin: [
-      "https://team-task-manager-oqs5-mocha.vercel.app",
-      "https://team-task-manager-oqs5-2k22cse2212759-9149s-projects.vercel.app"
-    ],
-    credentials: true,
-  })
-);
+app.use(cors({
+  origin: ["https://team-task-manager-oqs5-git-main-2k22cse2212759-9149s-projects.vercel.app"],
+  methods: ["GET", "POST", "PUT", "DELETE"],
+  credentials: true
+}));
 // ✅ Body parser
 app.use(express.json());
 app.use(express.urlencoded({ extended: true }));
