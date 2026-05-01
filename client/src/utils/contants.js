@@ -1,6 +1,6 @@
 const USERS_URL = "/users";
 
-const TASKS_URL = "/task";
+const TASKS_URL = "/tasks";
 
 const ADMIN_URL = "/admin";
 
