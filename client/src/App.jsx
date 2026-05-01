@@ -7,6 +7,7 @@ import { Toaster } from "sonner";
 import { Navbar, Sidebar } from "./components";
 import { Dashboard, Login, TaskDetail, Tasks, Trash, Users } from "./pages";
 import { setOpenSidebar } from "./redux/slices/authSlice";
+import Signup from "./pages/Signup";
 
 function Layout() {
   const { user } = useSelector((state) => state.auth);
@@ -106,6 +107,7 @@ const App = () => {
       </div>
 
       <Toaster richColors position='top-center' />
+      <Route path='/signup' element={<Signup />} /> 
     </main>
   );
 };
