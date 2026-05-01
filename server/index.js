@@ -17,9 +17,13 @@ const port = process.env.PORT || 5000;
 const app = express();
 
 // ✅ CORS FIX (🔥 IMPORTANT)
+
 app.use(
   cors({
-    origin: true,
+    origin: [
+      "https://team-task-manager-oqs5-2k22cse2212759-9149s-projects.vercel.app",
+      "https://team-task-manager-oqs5-mocha.vercel.app"
+    ],
     credentials: true,
   })
 );
