@@ -29,8 +29,17 @@ export const apiSlice = createApi({
       }),
     }),
 
+    // ✅ GET USERS
+    getUsers: builder.query({
+      query: () => "/users",
+    }),
+
   }),
 });
 
-// ✅ EXPORT BOTH
-export const { useLoginMutation, useRegisterMutation } = apiSlice;
+// ✅ EXPORT ALL HOOKS
+export const {
+  useLoginMutation,
+  useRegisterMutation,
+  useGetUsersQuery,
+} = apiSlice;
