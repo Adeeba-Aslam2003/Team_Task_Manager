@@ -47,7 +47,9 @@ app.use("/api", routes);
 app.use(routeNotFound);
 app.use(errorHandler);
 
-// ✅ Server start
-app.listen(port, () => {
+// ✅ 8️⃣ LAST LINE (YAHI ADD KARNA HAI)
+const port = process.env.PORT || 5000;
+
+app.listen(port, "0.0.0.0", () => {
   console.log(`Server listening on ${port}`);
 });
