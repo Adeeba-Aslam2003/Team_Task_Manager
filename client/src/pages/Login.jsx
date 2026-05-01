@@ -3,7 +3,7 @@ import { useDispatch, useSelector } from "react-redux";
 import { useNavigate } from "react-router-dom";
 import { toast } from "sonner";
 import { Button, Loading, Textbox } from "../components";
-import { useLoginMutation } from "../redux/slices/apiSlice"; // ✅ FIXED
+import { useLoginMutation } from "../redux/slices/apiSlice";
 import { setCredentials } from "../redux/slices/authSlice";
 import { useEffect } from "react";
 
@@ -21,7 +21,6 @@ const Login = () => {
 
   const [login, { isLoading }] = useLoginMutation();
 
-  // 🔥 UPDATED LOGIN FUNCTION
   const handleLogin = async (data) => {
     try {
       const res = await login(data).unwrap();
@@ -30,9 +29,7 @@ const Login = () => {
 
       toast.success("Login successful ✅");
 
-      // 🔥 VERY IMPORTANT (COOKIE ACTIVATE + DATA LOAD)
       navigate("/dashboard");
-
     } catch (err) {
       toast.error(err?.data?.message || err.error);
     }
@@ -81,6 +78,7 @@ const Login = () => {
               </p>
             </div>
 
+            {/* 🔥 UPDATED SECTION */}
             <div className='flex flex-col gap-y-5'>
               <Textbox
                 placeholder='you@example.com'
@@ -109,6 +107,17 @@ const Login = () => {
               <span className='text-sm text-gray-600 hover:underline cursor-pointer'>
                 Forget Password?
               </span>
+
+              {/* 🔥 SIGNUP LINK ADDED */}
+              <p className="text-sm text-center">
+                Don't have an account?{" "}
+                <span
+                  className="text-blue-600 cursor-pointer hover:underline"
+                  onClick={() => navigate("/signup")}
+                >
+                  Sign up
+                </span>
+              </p>
             </div>
 
             {isLoading ? (
