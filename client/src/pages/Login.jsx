@@ -31,7 +31,7 @@ const Login = () => {
       toast.success("Login successful ✅");
 
       // 🔥 VERY IMPORTANT (COOKIE ACTIVATE + DATA LOAD)
-      window.location.reload();
+      navigate("/dashboard");
 
     } catch (err) {
       toast.error(err?.data?.message || err.error);
