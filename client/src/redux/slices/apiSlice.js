@@ -3,12 +3,23 @@ import { createApi, fetchBaseQuery } from "@reduxjs/toolkit/query/react";
 export const apiSlice = createApi({
   reducerPath: "api",
 
- baseQuery: fetchBaseQuery({
- baseUrl: "https://teamtaskmanager-production-1362.up.railway.app/api",
-credentials: "include"
-}),
-  endpoints: (builder) => ({
+  baseQuery: fetchBaseQuery({
+    baseUrl: "https://teamtaskmanager-production-1362.up.railway.app/api",
+    credentials: "include",
 
+    // 🔥 YEH ADD KARO (MAIN FIX)
+    prepareHeaders: (headers, { getState }) => {
+      const token = getState().auth.user?.token;
+
+      if (token) {
+        headers.set("Authorization", `Bearer ${token}`);
+      }
+
+      return headers;
+    },
+  }),
+
+  endpoints: (builder) => ({
     login: builder.mutation({
       query: (data) => ({
         url: "/users/login",
@@ -28,7 +39,6 @@ credentials: "include"
     getUsers: builder.query({
       query: () => "/users/get-team",
     }),
-
   }),
 });
 
