@@ -7,11 +7,11 @@ export const apiSlice = createApi({
 
   baseQuery: fetchBaseQuery({
     baseUrl: API_URL + "/api",
+    credentials: "include",
   }),
 
   endpoints: (builder) => ({
     
-    // ✅ LOGIN API
     login: builder.mutation({
       query: (data) => ({
         url: "/users/login",
@@ -20,7 +20,6 @@ export const apiSlice = createApi({
       }),
     }),
 
-    // ✅ REGISTER API
     register: builder.mutation({
       query: (data) => ({
         url: "/users/register",
@@ -29,15 +28,14 @@ export const apiSlice = createApi({
       }),
     }),
 
-    // ✅ GET USERS
+    // 🔥 THIS IS THE FIX
     getUsers: builder.query({
-      query: () => "/users",
+      query: () => "/users/get-team",
     }),
 
   }),
 });
 
-// ✅ EXPORT ALL HOOKS
 export const {
   useLoginMutation,
   useRegisterMutation,
