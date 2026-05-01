@@ -9,12 +9,14 @@ import dbConnection from "./utils/connectDB.js";
 
 dotenv.config();
 
+// ✅ DB connect
 dbConnection();
 
 const port = process.env.PORT || 5000;
 
 const app = express();
 
+// ✅ CORS setup
 app.use(
   cors({
     origin: [
@@ -27,16 +29,25 @@ app.use(
   })
 );
 
+// ✅ Middlewares
 app.use(express.json());
 app.use(express.urlencoded({ extended: true }));
-
 app.use(cookieParser());
-
 app.use(morgan("dev"));
 
+// ✅ ROOT ROUTE (IMPORTANT - Railway test ke liye)
+app.get("/", (req, res) => {
+  res.send("Backend is running 🚀");
+});
+
+// ✅ API ROUTES
 app.use("/api", routes);
 
+// ✅ Error handling
 app.use(routeNotFound);
 app.use(errorHandler);
 
-app.listen(port, () => console.log(`Server listening on ${port}`));
+// ✅ Server start
+app.listen(port, () => {
+  console.log(`Server listening on ${port}`);
+});
