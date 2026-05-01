@@ -103,11 +103,12 @@ const App = () => {
           </Route>
 
           <Route path='/log-in' element={<Login />} />
+          <Route path='/signup' element={<Signup />} /> 
         </Routes>
       </div>
 
       <Toaster richColors position='top-center' />
-      <Route path='/signup' element={<Signup />} /> 
+      
     </main>
   );
 };
