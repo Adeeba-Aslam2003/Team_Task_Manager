@@ -16,7 +16,7 @@ const port = process.env.PORT || 5000;
 
 const app = express();
 
-// ✅ CORS setup
+// ✅ CORS FIX (🔥 IMPORTANT)
 app.use(
   cors({
     origin: [
@@ -25,18 +25,21 @@ app.use(
       "https://teamtaskify.netlify.app",
       "https://zingy-cactus-4ac620.netlify.app",
     ],
-    methods: ["GET", "POST", "DELETE", "PUT"],
     credentials: true,
   })
 );
 
-// ✅ Middlewares
+// ✅ Body parser
 app.use(express.json());
 app.use(express.urlencoded({ extended: true }));
+
+// ✅ Cookies
 app.use(cookieParser());
+
+// ✅ Logger
 app.use(morgan("dev"));
 
-// ✅ ROOT ROUTE (IMPORTANT - Railway test ke liye)
+// ✅ TEST ROUTE (Railway check)
 app.get("/", (req, res) => {
   res.send("Backend is running 🚀");
 });
@@ -44,11 +47,13 @@ app.get("/", (req, res) => {
 // ✅ API ROUTES
 app.use("/api", routes);
 
-// ✅ Error handling
+// ❌ NOT FOUND
 app.use(routeNotFound);
+
+// ❌ ERROR HANDLER
 app.use(errorHandler);
 
-// ✅ Server start
+// ✅ START SERVER
 app.listen(port, "0.0.0.0", () => {
-  console.log(`Server listening on ${port}`);
+  console.log(`🚀 Server running on port ${port}`);
 });
