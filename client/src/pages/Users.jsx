@@ -17,7 +17,7 @@ import {
   useGetTeamListsQuery,   // ✅ FIXED
 } from "../redux/slices/api/userApiSlice";
 
-import { useRegisterMutation } from "../redux/apiSlice"; // login/register yahin hai
+import { useRegisterMutation } from "../redux/slices/apiSlice"; // login/register yahin hai
 
 import { getInitials } from "../utils/index";
 

@@ -1,17 +1,14 @@
 import { createApi, fetchBaseQuery } from "@reduxjs/toolkit/query/react";
 
-const API_URL = "https://teamtaskmanager-production-1362.up.railway.app";
-
 export const apiSlice = createApi({
   reducerPath: "api",
 
-  baseQuery: fetchBaseQuery({
-    baseUrl: API_URL + "/api",
-    credentials: "include",
-  }),
-
+ baseQuery: fetchBaseQuery({
+  baseUrl: "https://teamtaskmanager-production-1362.up.railway.app/api",
+  credentials: "include",
+}),
   endpoints: (builder) => ({
-    
+
     login: builder.mutation({
       query: (data) => ({
         url: "/users/login",
@@ -28,7 +25,6 @@ export const apiSlice = createApi({
       }),
     }),
 
-    // 🔥 THIS IS THE FIX
     getUsers: builder.query({
       query: () => "/users/get-team",
     }),
