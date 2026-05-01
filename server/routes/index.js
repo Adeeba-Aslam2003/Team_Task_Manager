@@ -1,11 +1,10 @@
-
 import express from "express";
-import userRoutes from "./userRoute.js";
-import taskRoutes from "./taskRoute.js";
 
 const router = express.Router();
 
-router.use("/user", userRoutes);
-router.use("/task", taskRoutes);
+// ✅ ये route जरूरी है
+router.get("/", (req, res) => {
+  res.send("API is working 🚀");
+});
 
 export default router;
