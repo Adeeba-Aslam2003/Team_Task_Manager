@@ -1,4 +1,4 @@
-const USERS_URL = "/user";
+const USERS_URL = "/users";
 
 const TASKS_URL = "/task";
 
