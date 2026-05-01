@@ -14,19 +14,16 @@ import {
 import {
   useDeleteUserMutation,
   useUserActionMutation,
+  useGetTeamListsQuery,   // ✅ FIXED
 } from "../redux/slices/api/userApiSlice";
 
-// ✅ NEW IMPORT (IMPORTANT)
-import {
-  useGetUsersQuery,
-  useRegisterMutation,
-} from "../redux/apiSlice";
+import { useRegisterMutation } from "../redux/apiSlice"; // login/register yahin hai
 
 import { getInitials } from "../utils/index";
 
 const Users = () => {
-  // ✅ NEW API HOOK
-  const { data, isLoading, refetch } = useGetUsersQuery();
+  // ✅ CORRECT HOOK
+  const { data, isLoading, refetch } = useGetTeamListsQuery({ search: "" });
 
   const [registerUser] = useRegisterMutation();
   const [deleteUser] = useDeleteUserMutation();
@@ -54,9 +51,9 @@ const Users = () => {
 
   const deleteHandler = async () => {
     try {
-      const res = await deleteUser(selected);
+      const res = await deleteUser(selected).unwrap();
       refetch();
-      toast.success(res?.data?.message);
+      toast.success(res?.message || "Deleted");
       setSelected(null);
       setOpenDialog(false);
     } catch (err) {
@@ -69,10 +66,10 @@ const Users = () => {
       const res = await userAction({
         isActive: !selected?.isActive,
         id: selected?._id,
-      });
+      }).unwrap();
 
       refetch();
-      toast.success(res?.data?.message);
+      toast.success(res?.message || "Updated");
       setSelected(null);
       setOpenAction(false);
     } catch (err) {
