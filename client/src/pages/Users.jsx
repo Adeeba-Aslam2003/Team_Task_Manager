@@ -142,10 +142,10 @@ const Users = () => {
           <table className='w-full'>
             <TableHeader />
             <tbody>
-              {data?.map((user) => (
-                <TableRow key={user._id} user={user} />
-              ))}
-            </tbody>
+  {(Array.isArray(data) ? data : data?.users || []).map((user) => (
+    <TableRow key={user._id} user={user} />
+  ))}
+</tbody>
           </table>
         </div>
       </div>
