@@ -19,16 +19,10 @@ const app = express();
 // ✅ CORS FIX (🔥 IMPORTANT)
 app.use(
   cors({
-    origin: [
-      "http://localhost:3000",
-      "http://localhost:3001",
-      "https://teamtaskify.netlify.app",
-      "https://zingy-cactus-4ac620.netlify.app",
-    ],
+    origin: true,   // ✅ बस ये रखो
     credentials: true,
   })
 );
-
 // ✅ Body parser
 app.use(express.json());
 app.use(express.urlencoded({ extended: true }));
