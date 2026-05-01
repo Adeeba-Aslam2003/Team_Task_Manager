@@ -1,6 +1,6 @@
 import express from "express";
 import userRoutes from "./userRoute.js";
-import taskRoutes from "./taskRoutes.js"; // 👈 import
+import taskRoutes from "./taskRoute.js"; // 👈 import
 
 const router = express.Router();
 
@@ -10,7 +10,7 @@ router.get("/", (req, res) => {
 });
 
 // 👇 THIS IS MAIN FIX
-router.use("/users", userRoutes); 
-router.use("/tasks", taskRoutes);
+router.use("/users", userRoute); 
+router.use("/tasks", taskRoute);
 
 export default router;
