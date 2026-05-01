@@ -19,9 +19,7 @@ const app = express();
 // ✅ CORS FIX (🔥 IMPORTANT)
 app.use(
   cors({
-    origin: [
-      "https://team-task-manager-oqs5-git-main-2k22cse2212759-9149s-projects.vercel.app"
-    ],
+    origin: true,
     credentials: true,
   })
 );
