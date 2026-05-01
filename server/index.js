@@ -23,6 +23,7 @@ app.use(
       "http://localhost:3000",
       "http://localhost:3001",
       "https://teamtaskify.netlify.app",
+      "https://zingy-cactus-4ac620.netlify.app",
     ],
     methods: ["GET", "POST", "DELETE", "PUT"],
     credentials: true,
