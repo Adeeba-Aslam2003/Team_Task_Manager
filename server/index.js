@@ -21,8 +21,8 @@ const app = express();
 app.use(
   cors({
     origin: [
-      "https://team-task-manager-oqs5-2k22cse2212759-9149s-projects.vercel.app",
-      "https://team-task-manager-oqs5-mocha.vercel.app"
+      "https://team-task-manager-oqs5-mocha.vercel.app",
+      "https://team-task-manager-oqs5-2k22cse2212759-9149s-projects.vercel.app"
     ],
     credentials: true,
   })

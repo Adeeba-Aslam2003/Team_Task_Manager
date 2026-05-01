@@ -4,8 +4,8 @@ export const apiSlice = createApi({
   reducerPath: "api",
 
  baseQuery: fetchBaseQuery({
-  baseUrl: "https://teamtaskmanager-production-1362.up.railway.app/api",
-  credentials: "include",
+ baseUrl: "https://teamtaskmanager-production-1362.up.railway.app/api",
+credentials: "include"
 }),
   endpoints: (builder) => ({
 
