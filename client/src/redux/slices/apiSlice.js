@@ -1,13 +1,25 @@
 import { createApi, fetchBaseQuery } from "@reduxjs/toolkit/query/react";
 
-// const API_URL = import.meta.env.VITE_APP_BASE_URL + "/api";
-// const API_URL = "http://localhost:8800/api";
 const API_URL = "https://teamtaskmanager-production-1362.up.railway.app";
 
-const baseQuery = fetchBaseQuery({ baseUrl: API_URL + "/api" });
-
 export const apiSlice = createApi({
-  baseQuery,
-  tagTypes: [],
-  endpoints: (builder) => ({}),
+  reducerPath: "api",   // 🔥 ये add करना जरूरी है
+  baseQuery: fetchBaseQuery({
+    baseUrl: API_URL + "/api",
+  }),
+
+  endpoints: (builder) => ({
+    
+    // ✅ LOGIN API
+    login: builder.mutation({
+      query: (data) => ({
+        url: "/users/login",
+        method: "POST",
+        body: data,
+      }),
+    }),
+
+  }),
 });
+
+export const { useLoginMutation } = apiSlice;
