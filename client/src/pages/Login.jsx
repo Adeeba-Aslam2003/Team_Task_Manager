@@ -21,19 +21,22 @@ const Login = () => {
 
   const [login, { isLoading }] = useLoginMutation();
 
-  const handleLogin = async (data) => {
-    try {
-      const res = await login(data).unwrap();
+ const handleLogin = async (data) => {
+  try {
+    const res = await login(data).unwrap();
 
-      dispatch(setCredentials(res));
+    dispatch(setCredentials(res));
 
-      toast.success("Login successful ✅");
+    // ✅ ADD THIS LINE
+    localStorage.setItem("user", JSON.stringify(res));
 
-      navigate("/dashboard");
-    } catch (err) {
-      toast.error(err?.data?.message || err.error);
-    }
-  };
+    toast.success("Login successful ✅");
+
+    navigate("/dashboard");
+  } catch (err) {
+    toast.error(err?.data?.message || err.error);
+  }
+};
 
   useEffect(() => {
     if (user) {

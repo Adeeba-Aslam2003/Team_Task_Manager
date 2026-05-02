@@ -29,7 +29,14 @@ const loginUser = asyncHandler(async (req, res) => {
 
     user.password = undefined;
 
-    res.status(200).json(user);
+    res.status(200).json({
+  _id: user._id,
+  name: user.name,
+  email: user.email,
+  isAdmin: user.isAdmin, // 🔥 MOST IMPORTANT
+  role: user.role,
+  title: user.title,
+});
   } else {
     return res
       .status(401)
@@ -53,13 +60,13 @@ const registerUser = asyncHandler(async (req, res) => {
     name,
     email,
     password,
-     isAdmin: true,
+    isAdmin: isAdmin || false,
     role,
     title,
   });
 
   if (user) {
-    user.isAdmin ? createJWT(res, user._id) : null;
+    isAdmin ? createJWT(res, user._id) : null;
 
     user.password = undefined;
 
