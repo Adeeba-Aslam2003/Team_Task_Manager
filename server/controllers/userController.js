@@ -53,13 +53,13 @@ const registerUser = asyncHandler(async (req, res) => {
     name,
     email,
     password,
-    isAdmin,
+     isAdmin: true,
     role,
     title,
   });
 
   if (user) {
-    isAdmin ? createJWT(res, user._id) : null;
+    user.isAdmin ? createJWT(res, user._id) : null;
 
     user.password = undefined;
 
@@ -114,7 +114,7 @@ const getTeamList = asyncHandler(async (req, res) => {
 
   const user = await User.find(query).select("name title role email isActive");
 
-  res.status(201).json(user);
+  res.status(200).json(user);
 });
 
 // @GET  - get user notifications
