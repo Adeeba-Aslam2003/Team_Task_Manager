@@ -53,10 +53,6 @@ npm run dev
 cd ../client
 npm run dev
 
-## 📽 Demo Video
 
-(Add your demo video link here)
 
-## 👨‍💻 Author
 
-Adeeba Aslam
