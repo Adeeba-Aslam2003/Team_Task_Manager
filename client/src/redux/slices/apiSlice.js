@@ -4,7 +4,7 @@ export const apiSlice = createApi({
   reducerPath: "api",
 
   baseQuery: fetchBaseQuery({
-    baseUrl: "https://teamtaskmanager-production-1362.up.railway.app/api",
+   baseUrl: import.meta.env.VITE_API_URL,
     credentials: "include",
 
     // 🔥 YEH ADD KARO (MAIN FIX)
